@@ -10,6 +10,7 @@ ssize_t  ft_strlen(const void *s);
 char *ft_strdup(const char *s);
 char *ft_strcpy(char *dest, const char *src);
 int ft_strcmp(const char *s1, const char *s2);
+int			ft_atoi_base(const char *nb, const char *base);
 
 void	test_strcmp()
 {
@@ -94,6 +95,15 @@ void	test_read(char *file)
 	close(fd1);
 }
 
+void	test_atoi()
+{
+	printf("nb: '42' base: 0123456789abcdef = %d\n", ft_atoi_base("42", "0123456789abcdef"));
+	printf("nb: '    --42' base: 0123456789abcdef = %d\n", ft_atoi_base("    -42", "0123456789abcdef"));
+	printf("nb: '    -+10111234' base: 01 = %d\n", ft_atoi_base("    -+1234", "01"));
+	printf("nb: '    -+11111234' base: 01 = %d\n", ft_atoi_base("    -+1234", "01"));
+	printf("nb: '    -+asdfasdf' base: 01 = %d\n", ft_atoi_base("    -+asdfasdf", "01"));
+}
+
 int		main(int ac, char **av)
 {
 	char *ptr;
@@ -110,6 +120,8 @@ int		main(int ac, char **av)
 		test_write();
 	else if (strcmp(av[1], "ft_read") == 0)
 		test_read(av[2]);
+	else if (strcmp(av[1], "ft_atoi_base") == 0)
+		test_atoi();
 	else if (ac == 2)
 	{
 		printf("FT_STRLEN:\n\n");
