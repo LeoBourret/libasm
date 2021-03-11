@@ -106,23 +106,7 @@ void	test_atoi()
 
 int		main(int ac, char **av)
 {
-	char *ptr;
-
-	if (strcmp(av[1], "ft_strcmp") == 0)
-		test_strcmp();
-	else if (strcmp(av[1], "ft_strlen") == 0)
-		test_strlen();
-	else if (strcmp(av[1], "ft_strcpy") == 0)
-		test_strcpy();
-	else if (strcmp(av[1], "ft_strdup") == 0)
-		test_strdup();
-	else if (strcmp(av[1], "ft_write") == 0)
-		test_write();
-	else if (strcmp(av[1], "ft_read") == 0)
-		test_read(av[2]);
-	else if (strcmp(av[1], "ft_atoi_base") == 0)
-		test_atoi();
-	else if (ac == 2)
+	if (ac == 1)
 	{
 		printf("FT_STRLEN:\n\n");
 		test_strlen();
@@ -136,6 +120,22 @@ int		main(int ac, char **av)
 		test_read(av[1]);
 		printf("\n\n\nFT_STRDUP:\n");
 		test_strdup();
+		printf("\n\n\nFT_ATOI_BASE:\n");
+		test_atoi();
 	}
+	else if (strcmp(av[1], "ft_strcmp") == 0)
+		test_strcmp();
+	else if (strcmp(av[1], "ft_strlen") == 0)
+		test_strlen();
+	else if (strcmp(av[1], "ft_strcpy") == 0)
+		test_strcpy();
+	else if (strcmp(av[1], "ft_strdup") == 0)
+		test_strdup();
+	else if (strcmp(av[1], "ft_write") == 0)
+		test_write();
+	else if (strcmp(av[1], "ft_read") == 0)
+		test_read(av[2]);
+	else if (strcmp(av[1], "ft_atoi_base") == 0)
+		test_atoi();
 	return (0);
 }

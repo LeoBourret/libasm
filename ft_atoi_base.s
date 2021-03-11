@@ -10,8 +10,8 @@ check_base_dup:
 				je		check_base_inc
 				inc		r11
 				je		check_base_inc
-				mov		r12, byte[rsi + rcx]
-				cmp		byte[rsi + r11], r12
+				mov		dl, byte[rsi + rcx]
+				cmp		byte[rsi + r11], dl
 				je		error
 				cmp		r11, rcx
 				jl		check_base_dup
@@ -43,65 +43,70 @@ check_base_end:
 				cmp		rcx, 1
 				jle		error
 				jmp		get_nbr
-				mov		r4, -1
+				mov		r11, -1
 
 skip_whitespace_inc:
-				inc		r4
+				inc		r11
 
 skip_whitespace:
-				cmp		byte[rdi + r4], 0
+				cmp		byte[rdi + r11], 0
 				je		error
-				cmp		byte[rdi + r4], 9
+				cmp		byte[rdi + r11], 9
 				je		skip_whitespace_inc
-				cmp		byte[rdi + r4], 10
+				cmp		byte[rdi + r11], 10
 				je		skip_whitespace_inc
-				cmp		byte[rdi + r4], 11
+				cmp		byte[rdi + r11], 11
 				je		skip_whitespace_inc
-				cmp		byte[rdi + r4], 12
+				cmp		byte[rdi + r11], 12
 				je		skip_whitespace_inc
-				cmp		byte[rdi + r4], 32
+				cmp		byte[rdi + r11], 32
 				je		skip_whitespace_inc
-				mov		r5, 1
+				mov		r12, 1
 				jmp		get_sign
 
 is_negative:
-				mul		r5, -1
+				neg		r12
 
 is_positive:
-				inc		r4
+				inc		r11
 
 get_sign:
-				cmp		byte[rdi + r4], 0
+				cmp		byte[rdi + r11], 0
 				je		error
-				cmp		byte[rdi + r4], 43
+				cmp		byte[rdi + r11], 43
 				je		is_positive
-				cmp		byte[rdi + r4], 45
+				cmp		byte[rdi + r11], 45
 				je		is_negative
-				inc		r4
-				mov		r3, -1
+				inc		r11
+				mov		r10, -1
 
 is_in_base_inc:
-				inc		r3
+				inc		r10
 
 is_in_base:
-				cmp		byte[rsi + r3], 0
+				cmp		byte[rsi + r10], 0
 				je		end
-				mov		r1, byte[rsi + r3]
-				cmp		r1, r2
+				mov		bl, byte[rsi + r10]
+				cmp		bl, dl
 				jne		is_in_base_inc
 
 get_nbr:
-				mov		r3, -1
-				mov		r2, byte[rdi + r4]
-				inc		r4
+				mov		r10, -1
+				mov		dl, byte[rdi + r11]
+				inc		r11
 				mul		rcx
-				add		rax, r3
-				cmp		byte[rdi + r4], 0
+				add		rax, r10
+				cmp		byte[rdi + r11], 0
 				je		end
 				jmp		is_in_base_inc
 
 end:
-				mul		rax, r5
+				cmp		r12, -1
+				je		end_neg
+				ret
+
+end_neg:
+				neg		rax
 				ret
 
 error:
