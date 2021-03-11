@@ -9,7 +9,7 @@ SRC = 	./ft_strlen.s \
 		./ft_atoi_base.s
 
 NA = nasm
-NA_FLAGS = -f macho64
+NA_FLAGS = -f elf64
 
 OBJS = $(SRC:.s=.o)
 

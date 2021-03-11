@@ -1,7 +1,7 @@
-global _ft_atoi_base
+global ft_atoi_base
 section		.text
 
-_ft_atoi_base:
+ft_atoi_base:
 				xor		rax, rax
 				mov		rcx, -1
 
