@@ -6,7 +6,14 @@ SRC = 	./ft_strlen.s \
 		./ft_write.s  \
 		./ft_read.s   \
 		./ft_strdup.s \
-		./ft_atoi_base.s
+		./ft_atoi_base_bonus.s \
+		./ft_create_elem_bonus.s \
+		./ft_list_push_front_bonus.s \
+		./ft_list_size_bonus.s
+
+SRC_BONUS = ./ft_atoi_base_bonus.s \
+			./ft_create_elem_bonus.s \
+			./ft_push_front_bonus.s
 
 NA = nasm
 NA_FLAGS = -f elf64

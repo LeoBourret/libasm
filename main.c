@@ -228,7 +228,7 @@ int		main(int ac, char **av)
 {
 	if (ac == 1)
 	{
-		printf("FT_STRLEN:\n\n");
+	/*	printf("FT_STRLEN:\n\n");
 		test_strlen();
 		printf("\n\n\nFT_STRCPY:\n\n");
 		test_strcpy();
@@ -239,13 +239,13 @@ int		main(int ac, char **av)
 		printf("\n\n\nFT_READ:\n\n");
 		test_read(av[1]);
 		printf("\n\n\nFT_STRDUP:\n");
-		test_strdup();
+		test_strdup();*/
 		printf("\n\n\nFT_ATOI_BASE:\n");
 		test_atoi();
-		printf("\n\n\nFT_WRITE:\n");
-		test_write();
+/*		printf("\n\n\nFT_WRITE:\n");
+		test_write();*/
 	}
-	else if (strcmp(av[1], "ft_strcmp") == 0)
+/*	else if (strcmp(av[1], "ft_strcmp") == 0)
 		test_strcmp();
 	else if (strcmp(av[1], "ft_strlen") == 0)
 		test_strlen();
@@ -258,6 +258,6 @@ int		main(int ac, char **av)
 	else if (strcmp(av[1], "ft_read") == 0)
 		test_read(av[2]);
 	else if (strcmp(av[1], "ft_atoi_base") == 0)
-		test_atoi();
+		test_atoi();*/
 	return (0);
 }
