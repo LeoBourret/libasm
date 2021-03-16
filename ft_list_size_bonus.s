@@ -3,12 +3,13 @@ section		.text
 
 ft_list_size:
 				xor		rax, rax
+				mov		rsi, rdi
 start:
 				cmp		rdi, 0
-				je		end
+				jz		end
 				inc		rax
-				mov		rdx, [rdi + 8]
-				mov		[rdi], rdx
+				mov		rdi, [rdi + 8]
 				jmp		start
 end:
+				mov rdi, rsi
 				ret

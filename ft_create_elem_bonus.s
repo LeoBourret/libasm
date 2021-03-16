@@ -4,12 +4,13 @@ section .text
 extern		malloc
 
 ft_create_elem:
-				mov		rbx, rdi
+				push	rdi
 				mov		rdi, 16
 				call	malloc
 				test	rax, rax
 				jz		end
-				mov		qword [rax], rbx
+				pop		rdi
+				mov		qword [rax], rdi
 				mov		qword [rax + 8], 0
 end:
 				ret

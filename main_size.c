@@ -18,11 +18,14 @@ int		main()
 	char	*third;
 	int		ret;
 
+	ret = 0;
 	first = "43";
 	second = "44";
 	third = "42";
 	list = ft_create_elem(first);
 	list->next = ft_create_elem(second);
+	ret = ft_list_size(list);
+	printf("%d\n", ret);
 	ft_list_push_front(&list, third);
 	ret = ft_list_size(list);
 	printf("%d\n", ret);
