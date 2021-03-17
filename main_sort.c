@@ -11,18 +11,18 @@ void		ft_list_push_front(t_list	**begin, void *data);
 int			ft_list_size(t_list *list);
 void		ft_list_sort(t_list **begin, int(*cmp)());
 
-int		ft_strcmp(void *v1, void *v2)
+int		ft_memcmp(const void *s1, const void *s2)
 {
-	unsigned char	*s1;
-	unsigned char	*s2;
-	int				i;
+	const char	*ptr1;
+	const char	*ptr2;
+	size_t		i;
 
+	ptr1 = s1;
+	ptr2 = s2;
 	i = 0;
-	s1 = (unsigned char*)v1;
-	s2 = (unsigned char*)v2;
-	while (s1[i] && s2[i] && s1[i] == s2[i])
+	while (ptr1[i] == ptr2[i] && ptr1[i] && ptr2[i])
 		i++;
-	return (s1[i] - s2[i]);
+	return ((unsigned char)ptr1[i] - (unsigned char)ptr2[i]);
 }
 
 int		main()
@@ -31,18 +31,17 @@ int		main()
 	char	*first;
 	char	*second;
 	char	*third;
-	int		ret;
+	int		i;
 
-	ret = 0;
-	first = "14";
-	second = "41";
-	third = "47";
-	list = ft_create_elem(first);
-	list->next = ft_create_elem("45");
-	list->next->next = ft_create_elem(second);
-	ret = ft_list_size(list);
-	ft_list_push_front(&list, third);
-	ft_list_sort(&list, &ft_strcmp);
-	printf("%d\n", ret);
+	list = ft_create_elem("3");
+	list->next = ft_create_elem("1");
+	list->next->next = ft_create_elem("4");
+	ft_list_push_front(&list, "2");
+	ft_list_sort(&list, &ft_memcmp);
+	while (list)
+	{
+		printf("%s\n", (char *)list->data);
+		list = list->next;
+	}
 	return (0);
 }
