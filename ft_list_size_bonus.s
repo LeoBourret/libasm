@@ -2,6 +2,7 @@ global		ft_list_size
 section		.text
 
 ft_list_size:
+				push	rsi
 				xor		rax, rax
 				mov		rsi, rdi		;rsi == save of *begin_list
 start:
@@ -11,5 +12,6 @@ start:
 				mov		rdi, [rdi + 8]
 				jmp		start
 end:
-				mov rdi, rsi
+				mov		rdi, rsi
+				pop		rsi
 				ret

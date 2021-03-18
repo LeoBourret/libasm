@@ -2,6 +2,7 @@ global ft_atoi_base
 section		.text
 
 ft_atoi_base:
+				push	r12
 				xor		rax, rax
 				xor		rcx, rcx
 				jmp		check_base
@@ -102,12 +103,15 @@ get_nbr:
 end:
 				cmp		r12, -1
 				je		end_neg
+				pop		r12
 				ret
 
 end_neg:
 				neg		rax
+				pop		r12
 				ret
 
 error:
+				pop		r12
 				xor rax, rax
 				ret

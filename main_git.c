@@ -140,16 +140,18 @@ int		main(void)
 	printf("added: `%s` (s%p : n%p)\n", push_test->data, push_test, push_test->next);
 	ft_lstclear(&push_test);
 	printf("-done\n");
-/*
+
 	printf("\n--ft_list_remove_if\n");
-	ft_list_push_front(&push_test, strdup("toto"));
+	printf("data to delete: \"toto\"\n");
 	ft_list_push_front(&push_test, strdup("barbar"));
+	ft_list_push_front(&push_test, strdup("toto"));
 	ft_list_push_front(&push_test, strdup("tortor"));
 	ft_list_push_front(&push_test, NULL);
+	ft_list_push_front(&push_test, strdup("toto"));
 	printf("before:\n");
 	printf_list(push_test);
-	ft_list_remove_if(&push_test, "", &strcmp, &free);
-	printf("nothing removed:\n");
+	ft_list_remove_if(&push_test, "toto", &strcmp, &free);
+	printf("after:\n");
 	printf_list(push_test);
 	ft_list_remove_if(&push_test, "toto", &strcmp, &free);
 	ft_list_remove_if(&push_test, "tortor", &strcmp, &free);
@@ -160,7 +162,7 @@ int		main(void)
 	printf_list(push_test);
 	ft_lstclear(&push_test);
 	printf("-done\n");
-*/
+/*
 	printf("\n--ft_list_sort\n");
 	ft_list_push_front(&push_test, strdup("0123456"));
 	ft_list_push_front(&push_test, strdup("lmn"));
@@ -178,6 +180,6 @@ int		main(void)
 	ft_list_sort(NULL, &strcmp);
 	ft_list_sort(&push_test, &strcmp);
 	printf("-done\n");
-
+*/
 	return (0);
 }
