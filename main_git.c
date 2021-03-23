@@ -17,8 +17,7 @@ typedef struct	s_list
 /*
 ** print a list elements one by line
 */
-void
-	printf_list(t_list *list)
+void	printf_list(t_list *list)
 {
 	while (list)
 	{
@@ -30,8 +29,7 @@ void
 /*
 ** free a whole list and it's data field
 */
-void
-	ft_lstclear(t_list **list)
+void	ft_lstclear(t_list **list)
 {
 	t_list	*tmp;
 
@@ -143,21 +141,41 @@ int		main(void)
 
 	printf("\n--ft_list_remove_if\n");
 	printf("data to delete: \"toto\"\n");
+	ft_list_push_front(&push_test, strdup("ptdr"));
 	ft_list_push_front(&push_test, strdup("barbar"));
 	ft_list_push_front(&push_test, strdup("toto"));
 	ft_list_push_front(&push_test, strdup("tortor"));
-	ft_list_push_front(&push_test, NULL);
 	ft_list_push_front(&push_test, strdup("toto"));
+	ft_list_push_front(&push_test, strdup("mdr"));
+	ft_list_push_front(&push_test, strdup("ptdr"));
 	printf("before:\n");
 	printf_list(push_test);
 	ft_list_remove_if(&push_test, "toto", &strcmp, &free);
 	printf("after:\n");
 	printf_list(push_test);
-	ft_list_remove_if(&push_test, "toto", &strcmp, &free);
-	ft_list_remove_if(&push_test, "tortor", &strcmp, &free);
+	printf("\n");
+	printf("remove barbar with current list\n");
 	ft_list_remove_if(&push_test, "barbar", &strcmp, &free);
-	ft_list_remove_if(&push_test, "", &strcmp, &free);
-	ft_list_remove_if(&push_test, NULL, &strcmp, &free);
+	printf("after:\n");
+	printf_list(push_test);
+	printf("\n");
+	printf("remove toto again with current list\n");
+	ft_list_remove_if(&push_test, "toto", &strcmp, &free);
+	printf("after:\n");
+	printf_list(push_test);
+	printf("\n");
+	printf("remove mdr with current list\n");
+	ft_list_remove_if(&push_test, "mdr", &strcmp, &free);
+	printf("after:\n");
+	printf_list(push_test);
+	printf("\n");
+	printf("remove ptdr with current list\n");
+	ft_list_remove_if(&push_test, "ptdr", &strcmp, &free);
+	printf("after:\n");
+	printf_list(push_test);
+	printf("\n");
+	printf("remove tortor with current list\n");
+	ft_list_remove_if(&push_test, "tortor", &strcmp, &free);
 	printf("after:\n");
 	printf_list(push_test);
 	ft_lstclear(&push_test);

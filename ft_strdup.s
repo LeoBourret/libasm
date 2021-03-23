@@ -11,9 +11,9 @@ ft_strdup:
 			mov		rdi, rax
 			inc		rdi
 			call	malloc
+			pop		rdi
 			test	rax, rax
 			jz		fail_exit
-			pop		rdi
 			mov		rsi, rdi
 			mov		rdi, rax
 			call	ft_strcpy
