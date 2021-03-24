@@ -21,6 +21,7 @@ void	test_write()
 	char *string = "Ca c'est une autre string de test definitivement trop longue";
 	char *lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed interdum ut magna ac lacinia. Aliquam vel imperdiet augue. Duis tristique magna id quam consequat consectetur. In sed quam ultrices, posuere elit ac, placerat justo. Fusce quis convallis magna. Curabitur scelerisque mi et diam congue dignissim. Cras tempus sem tellus, venenatis molestie sem porta ut. Curabitur sapien tellus, malesuada nec porta quis, facilisis quis magna. Nam vehicula purus sem, sed consequat dolor tempus sed. Cras at rhoncus risus, eu maximus velit. Curabitur non dolor lacus. Quisque semper commodo dictum.\n";
 	char *str_courte = "i";
+
 	ret = write(1, "Ceci est un test de la fonction write\n", 38);
 	if (ret < 0)
 		perror("message d'erreur de write");
@@ -103,37 +104,37 @@ void	test_read()
 	int ret;
 	int ft_ret;
 	char buf[1000];
-	fd = open("./test/file/file1", O_RDONLY);
+	fd = open("./file/file1", O_RDONLY);
 	buf[0] = 0;
-	printf("read: %d : %s\n", ret = read(fd, buf, 10), buf);
+	printf("read: %d :\n%s\n", ret = read(fd, buf, 10), buf);
 	if (ret < 0)
 		perror("message d'erreur de read\n");
 	errno = 0;
-	fd = open("./test/file/file1", O_RDONLY);
+	fd = open("./file/file1", O_RDONLY);
 	buf[0] = 0;
-	printf("ft_read: %d : %s\n", ret = ft_read(fd, buf, 10), buf);
+	printf("ft_read: %d :\n%s\n", ret = ft_read(fd, buf, 10), buf);
 	if (ret < 0)
 		perror("message d'erreur de ft_read\n");
 	errno = 0;
-	fd = open("./test/file/file3", O_RDONLY);
+	fd = open("./file/file3", O_RDONLY);
 	buf[0] = 0;
 	printf("read: %d : %s\n", ret = read(fd, buf, 15), buf);
 	if (ret < 0)
 		perror("message d'erreur de read\n");
 	errno = 0;
-	fd = open("./test/file/file3", O_RDONLY);
+	fd = open("./file/file3", O_RDONLY);
 	buf[0] = 0;
 	printf("ft_read: %d : %s\n", ret = ft_read(fd, buf, 15), buf);
 	if (ret < 0)
 		perror("message d'erreur de ft_read\n");
 	errno = 0;
-	fd = open("./test/file/file2", O_RDONLY);
+	fd = open("./file/file2", O_RDONLY);
 	buf[0] = 0;
 	printf("read: %d : %s\n", ret = read(fd, buf, 15), buf);
 	if (ret < 0)
 		perror("message d'erreur de read\n");
 	errno = 0;
-	fd = open("./test/file/file2", O_RDONLY);
+	fd = open("./file/file2", O_RDONLY);
 	buf[0] = 0;
 	printf("ft_read: %d : %s\n", ret = ft_read(fd, buf, 15), buf);
 	if (ret < 0)
@@ -215,20 +216,11 @@ void	test_strdup()
 	free(ptr);
 }
 
-void	test_atoi()
-{
-	printf("nb: '42' base: 0123456789abcdef = %d\n", ft_atoi_base("42", "0123456789abcdef"));
-	printf("nb: '    --42' base: 0123456789abcdef = %d\n", ft_atoi_base("    -42", "0123456789abcdef"));
-	printf("nb: '    -+10111234' base: 01 = %d\n", ft_atoi_base("    -+1234", "01"));
-	printf("nb: '    -+11111234' base: 01 = %d\n", ft_atoi_base("    -+1234", "01"));
-	printf("nb: '    -+asdfasdf' base: 01 = %d\n", ft_atoi_base("    -+asdfasdf", "01"));
-}
-
 int		main(int ac, char **av)
 {
 	if (ac == 1)
 	{
-	/*	printf("FT_STRLEN:\n\n");
+		printf("FT_STRLEN:\n\n");
 		test_strlen();
 		printf("\n\n\nFT_STRCPY:\n\n");
 		test_strcpy();
@@ -237,15 +229,13 @@ int		main(int ac, char **av)
 		printf("\n\n\nFT_WRITE:\n\n");
 		test_write();
 		printf("\n\n\nFT_READ:\n\n");
-		test_read(av[1]);
+		test_read();
 		printf("\n\n\nFT_STRDUP:\n");
-		test_strdup();*/
-		printf("\n\n\nFT_ATOI_BASE:\n");
-		test_atoi();
-/*		printf("\n\n\nFT_WRITE:\n");
-		test_write();*/
+		test_strdup();
+		printf("\n\n\nFT_WRITE:\n");
+		test_write();
 	}
-/*	else if (strcmp(av[1], "ft_strcmp") == 0)
+	else if (strcmp(av[1], "ft_strcmp") == 0)
 		test_strcmp();
 	else if (strcmp(av[1], "ft_strlen") == 0)
 		test_strlen();
@@ -256,8 +246,6 @@ int		main(int ac, char **av)
 	else if (strcmp(av[1], "ft_write") == 0)
 		test_write();
 	else if (strcmp(av[1], "ft_read") == 0)
-		test_read(av[2]);
-	else if (strcmp(av[1], "ft_atoi_base") == 0)
-		test_atoi();*/
+		test_read();
 	return (0);
 }
