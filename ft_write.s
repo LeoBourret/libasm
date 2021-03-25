@@ -3,14 +3,15 @@
 section .text
 
 ft_write:
-			mov rax, 1
+			mov		rax, 1
 			syscall
-			jc error
+			cmp		rax, 0
+			jl		error
 			ret
 error:
-			mov rdi, rax
-			neg rdi
-			call __errno_location
-			mov [rax], rdi
-			mov rax, -1
+			mov		rdi, rax
+			neg		rdi
+			call	__errno_location
+			mov		[rax], rdi
+			mov		rax, -1
 			ret

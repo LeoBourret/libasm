@@ -5,7 +5,8 @@ section .text
 ft_read:
 			mov rax, 0
 			syscall
-			jc error
+			cmp rax, 0
+			jl error
 			ret
 error:
 			mov rdi, rax

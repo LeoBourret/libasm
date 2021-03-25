@@ -15,7 +15,7 @@ SRC_BONUS = 	./ft_atoi_base_bonus.s \
 
 NA = 			nasm
 NA_FLAGS = 		-f elf64
-
+FLAGS =			-Wall -Werror -Wextra
 OBJS = 			$(SRC:.s=.o)
 OBJS_BONUS = 	$(SRC_BONUS:.s=.o)
 

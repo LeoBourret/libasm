@@ -15,22 +15,20 @@ int			ft_atoi_base(const char *nb, const char *base);
 
 void	test_write()
 {
-	printf("test write\n");
 	int ret;
 	int ft_ret;
 	char *string = "Ca c'est une autre string de test definitivement trop longue";
 	char *lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed interdum ut magna ac lacinia. Aliquam vel imperdiet augue. Duis tristique magna id quam consequat consectetur. In sed quam ultrices, posuere elit ac, placerat justo. Fusce quis convallis magna. Curabitur scelerisque mi et diam congue dignissim. Cras tempus sem tellus, venenatis molestie sem porta ut. Curabitur sapien tellus, malesuada nec porta quis, facilisis quis magna. Nam vehicula purus sem, sed consequat dolor tempus sed. Cras at rhoncus risus, eu maximus velit. Curabitur non dolor lacus. Quisque semper commodo dictum.\n";
 	char *str_courte = "i";
-
 	ret = write(1, "Ceci est un test de la fonction write\n", 38);
 	if (ret < 0)
 		perror("message d'erreur de write");
 	errno = 0;
 	ft_ret = ft_write(1, "Ceci est un test de la fonction write\n", 38);
 	if (ft_ret < 0)
-		perror("message d'erreur d'ft_write");
+		perror("message d'erreur de ft_write");
 	errno = 0;
-	printf("write : %d | ft_write : %d\n", ret, ft_ret);
+	printf("write : %d | ft_write : %d\n\n", ret, ft_ret);
 	ret = write(1, string, 20);
 	if (ret < 0)
 		perror("message d'erreur de write");
@@ -38,10 +36,10 @@ void	test_write()
 	printf("\n");
 	ft_ret = ft_write(1, string, 20);
 	if (ft_ret < 0)
-		perror("message d'erreur d'ft_write");
+		perror("message d'erreur de ft_write");
 	errno = 0;
 	printf("\n");
-	printf("write : %d | ft_write : %d\n", ret, ft_ret);
+	printf("write : %d | ft_write : %d\n\n", ret, ft_ret);
 	ret = write(1, str_courte, 20);
 	if (ret < 0)
 		perror("message d'erreur de write");
@@ -49,18 +47,17 @@ void	test_write()
 	printf("\n");
 	ft_ret = ft_write(1, str_courte, 20);
 	if (ft_ret < 0)
-		perror("message d'erreur d'ft_write");
+		perror("message d'erreur de ft_write");
 	errno = 0;
 	printf("\n");
-	printf("write : %d | ft_write : %d\n", ret, ft_ret);
+	printf("write : %d | ft_write : %d\n\n", ret, ft_ret);
 	ret = write(1, NULL, 10);
 	if (ret < 0)
 		perror("message d'erreur de write");
 	errno = 0;
-	printf("\n");
 	ft_ret = ft_write(1, NULL, 10);
 	if (ft_ret < 0)
-		perror("message d'erreur d'ft_write");
+		perror("message d'erreur de ft_write");
 	errno = 0;
 	printf("\n");
 	printf("write : %d | ft_write : %d\n", ret, ft_ret);
@@ -70,7 +67,7 @@ void	test_write()
 	errno = 0;
 	ft_ret = ft_write(1, lorem, strlen(lorem));
 	if (ft_ret < 0)
-		perror("message d'erreur d'ft_write");
+		perror("message d'erreur de ft_write");
 	errno = 0;
 	printf("write : %d | ft_write : %d\n", ret, ft_ret);
 	ret = write(1, lorem, 0);
@@ -80,7 +77,7 @@ void	test_write()
 	printf("\n");
 	ft_ret = ft_write(1, lorem, 0);
 	if (ft_ret < 0)
-		perror("message d'erreur d'ft_write");
+		perror("message d'erreur de ft_write");
 	errno = 0;
 	printf("\n");
 	printf("write : %d | ft_write : %d\n", ret, ft_ret);
@@ -91,7 +88,7 @@ void	test_write()
 	printf("\n");
 	ft_ret = ft_write(42000, lorem, 30);
 	if (ft_ret < 0)
-		perror("message d'erreur d'ft_write");
+		perror("message d'erreur de ft_write");
 	errno = 0;
 	printf("\n");
 	printf("write : %d | ft_write : %d\n", ret, ft_ret);
@@ -99,7 +96,6 @@ void	test_write()
 
 void	test_read()
 {
-	printf("test read\n");
 	int fd;
 	int ret;
 	int ft_ret;
@@ -116,6 +112,7 @@ void	test_read()
 	if (ret < 0)
 		perror("message d'erreur de ft_read\n");
 	errno = 0;
+	printf("\n\n");
 	fd = open("./file/file3", O_RDONLY);
 	buf[0] = 0;
 	printf("read: %d : %s\n", ret = read(fd, buf, 15), buf);
@@ -126,7 +123,7 @@ void	test_read()
 	buf[0] = 0;
 	printf("ft_read: %d : %s\n", ret = ft_read(fd, buf, 15), buf);
 	if (ret < 0)
-		perror("message d'erreur de ft_read\n");
+		perror("message d'erreur de ft_read\n\n");
 	errno = 0;
 	fd = open("./file/file2", O_RDONLY);
 	buf[0] = 0;
