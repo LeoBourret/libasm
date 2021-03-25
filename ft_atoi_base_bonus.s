@@ -32,6 +32,8 @@ check_base:
 				je		error
 				cmp		byte[rsi + rcx], 12
 				je		error
+				cmp		byte[rsi + rcx], 13
+				je		error
 				cmp		byte[rsi + rcx], 32
 				je		error
 				cmp		byte[rsi + rcx], 43
@@ -60,6 +62,8 @@ skip_whitespace:
 				cmp		byte[rdi + r11], 11
 				je		skip_whitespace_inc
 				cmp		byte[rdi + r11], 12
+				je		skip_whitespace_inc
+				cmp		byte[rdi + r11], 13
 				je		skip_whitespace_inc
 				cmp		byte[rdi + r11], 32
 				je		skip_whitespace_inc
