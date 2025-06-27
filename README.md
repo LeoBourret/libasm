@@ -76,7 +76,7 @@ This project provided unparalleled insights into:
 *   **System Call Interface:** Direct interaction with the operating system kernel.
 *   **Calling Conventions:** Mastery of how arguments are passed and return values are handled at the assembly level.
 *   **Performance Optimization:** Understanding the foundations for highly optimized code.
-*   **Memory Management:** Detailed insights into how memory is managed at the lowest levels.
+*   **Memory Management:** Detailed insights into how memory is managed at the lowest levels. (Though, perhaps `ft_list_remove_if` needed a few more `pop`s just for good measure...)
 *   **Reverse Engineering (Implicit):** The process of reimplementing standard functions often involves analyzing their original behavior at a deeper level.
 
 ---
